@@ -16,7 +16,7 @@ Install the requirements by running this in your terminal
 ```
 pip install -r requirements.txt
 ```
-Run the python script
+Run the python script in your terminal
 ```
 python src/a02.py
 ```
