@@ -40,3 +40,32 @@ mlp_regressor = MLPRegressor(
 # Train the model
 mlp_regressor.fit(X_train, y_train)
 print("MLPRegressor model trained successfully with early stopping.")
+
+
+
+import os
+import matplotlib.pyplot as plt
+ 
+# Create predictions on the training set
+train_pred = mlp_regressor.predict(X_train)
+
+# Make sure the figures folder exists
+os.makedirs('figures', exist_ok=True)
+
+#Plot actual vs.predicted valuesfor the training set
+plt.figure(figsize=(6, 6))
+plt.scatter(y_train, train_pred, alpha=0.3, s=10)
+plt.plot(
+[y_train.min(), y_train.max()], 
+[y_train.min(), y_train.max()], "r--"
+linewidth=2,
+) 
+plt.xlabel ("Actual median house value")
+plt.ylabel("Predicted median house value")
+plt.title("Actual vs. Predicted \u2014 Train")
+plt.tight_layout()
+plt.savefig("figures/train_actual_vs_pred.png", dpi=150)
+plt.close()
+
+print("Saved figures/train_actual_vs_pred.png")
+
